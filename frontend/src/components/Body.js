@@ -49,7 +49,7 @@ const Body= ()=> {
       const handleRandomString = async (event) => {
         event.preventDefault();
         try {
-          const response = await axios.post('http://localhost:5001/api/operation/random',{},{
+          const response = await axios.post(`${API_BASE_URL}/api/operation/random`,{},{
             headers: {
               'Authorization': `Bearer ${localStorage.getItem('token')}`,
             }});
