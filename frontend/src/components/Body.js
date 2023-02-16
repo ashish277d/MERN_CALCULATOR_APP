@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from 'axios'
+import {API_BASE_URL} from '../Config'
 
 const Body= ()=> {
 
@@ -14,7 +15,7 @@ const Body= ()=> {
   
     const performOperation = async () => {
       try {
-        const response = await axios.post(`http://localhost:5001/api/operation/${currentOperation}`, {
+        const response = await axios.post(`${API_BASE_URL}/api/operation/${currentOperation}`, {
           num1: input1,
           num2: input2,
         }, {
@@ -32,7 +33,7 @@ const Body= ()=> {
     const handleSquareRoot = async (event) => {
         event.preventDefault();
         try {
-          const response = await axios.post('http://localhost:5001/api/operation/square_root', {
+          const response = await axios.post(`${API_BASE_URL}/api/operation/square_root`, {
             num: event.target.number.value,
           },{
             headers: {

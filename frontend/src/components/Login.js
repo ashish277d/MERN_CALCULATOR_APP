@@ -1,32 +1,24 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import LoginContext from '../context/LoginContext';
+import AuthContext from '../context/AuthProvider';
+import {API_BASE_URL} from '../Config'
 
 // Create a new context for user authentication state
-const AuthContext = React.createContext();
+//const AuthContext = React.createContext();
 
  const Login= ()=> {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  const { login, setLogin } = useContext(LoginContext);
+ // const { login, setLogin } = useContext(AuthContext);
 
   const handleSubmit = event => {
     event.preventDefault();
-    axios.post('http://localhost:5001/api/users/login', { email, password })
+    axios.post(`${API_BASE_URL}/api/users/login`, { email, password })
       .then(response => {
         localStorage.setItem('token', response.data.token);
         console.log('Login successful!');
-        // Update the authentication context to indicate the user is logged in
-       // authContext.setIsAuthenticated(true);
-        // Save authentication state in local storage
-        //localStorage.setItem("isAuthenticated", true);
-
-        setLogin({
-            username: e.target.value,
-            isLoggedIn: true
-          })
        navigate('/');
       })
       .catch(error => {

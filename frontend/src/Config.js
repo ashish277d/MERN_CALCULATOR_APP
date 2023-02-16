@@ -1,0 +1,1 @@
+export const API_BASE_URL="https://xh19bkp1ca.execute-api.us-east-1.amazonaws.com/dev"

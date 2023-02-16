@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import Body from "./components/Body";
 import Record from "./components/Record";
 import Operation  from "./components/Operation";
+import { AuthProvider } from './context/AuthProvider';
 
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
@@ -12,12 +13,10 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 const AppLayout = () => {
     return (
-
-      <>
+      <AuthProvider>
         <Header />
         <Outlet />
-        {/* <Footer />  */}
-      </>
+      </AuthProvider>
    );
   };
 

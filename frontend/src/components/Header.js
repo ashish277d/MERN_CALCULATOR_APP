@@ -1,19 +1,21 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import LoginContext from '../context/LoginContext';
+import AuthProvider from '../context/AuthProvider';
+import Logo from "../assets/img/calculator.png";
 
 const Title =()=> (
     <a href="/">
     <img
     className = "h-28 p-2"
     alt="logo"
-    src="https://obs.line-scdn.net/0m0339dd5b72513e8a8d6127b836e5ecf1e128f1da5cb7"
+    src={Logo}
     />
     </a>
     )
 
     const Header =() =>{
         const [isLoggedIn,setIsLoggedIn]=useState(false);
+
         return (
         <div className = "flex justify-between bg-pink-50 shadow-lg sm:bg-blue-50 md:bg-yellow-50" >
             <Title />
@@ -29,7 +31,7 @@ const Title =()=> (
               <li className="px-2">Add Operation</li>
               </Link>
               <Link to="/login">
-              { LoginContext.isLoggedIn ? (
+              { AuthProvider.isLoggedIn ? (
             <li onClick={() => setIsLoggedIn(false)}>Logout</li>
                  ):(<li onClick={() => setIsLoggedIn(true)}>Login</li>)} 
               </Link>
